@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="lg:col-span-5 space-y-4">
             <Logo variant="light" size="md" />
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm mt-3">
-              Klub renang yang mengedepankan pendekatan adaptif, kenyamanan, teknik terarah, dan keselamatan air (*water safety*) untuk membangun kepercayaan diri serta kebugaran setiap atlet.
+              Klub renang yang mengedepankan pendekatan adaptif, kenyamanan, teknik terarah, dan keselamatan air (water safety) untuk membangun kepercayaan diri serta kebugaran setiap atlet.
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a

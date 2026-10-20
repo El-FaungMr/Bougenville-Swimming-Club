@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bougenville Swimming Club | Les & Pelatihan Renang Profesional</title>
+    <meta name="description" content="Klub & Kursus Renang Profesional Bougenville Swimming Club. Program untuk balita, anak-anak, dewasa, kelas privat, hingga pembinaan atlet berprestasi bersama pelatih bersertifikasi.">
+    <meta name="keywords" content="les renang, klub renang, bougenville swimming club, kursus renang anak, pelatih renang privat, belajar renang dewasa, atlet renang">
+   
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+     
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        bougenville: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            700: '#be185d',
+                             }
+                    }
+                }
+            }
+        }
+    </script>
+
+     <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- TOP BAR INFO -->
+    <div class="bg-gradient-to-r from-brand-900 via-brand-800 to-brand-900 text-slate-200 text-xs py-2 px-4 border-b border-brand-700/50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4 flex-wrap justify-center">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-brand-400"></i> Basecamp & Kolam Mitra Pilihan</span>
+                <span class="hidden md:inline">•</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-clock text-brand-400"></i> Latihan: Selasa - Minggu (06.00 - 18.00 WIB)</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="https://instagram.com" target="_blank" class="hover:text-white transition flex items-center gap-1"><i class="fa-brands fa-instagram"></i> @bougenvilleswim</a>
+                <span>•</span>
+                <a href="#daftar" class="text-brand-300 font-medium hover:text-white transition">Trial Gratis Tersedia!</a>
+            </div>
+        </div>
+    </div>
+
+     <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-700 via-brand-500 to-cyan-400 flex items-center justify-center text-white text-xl shadow-md shadow-brand-500/25 group-hover:scale-105 transition-transform duration-300">
+                        <i class="fa-solid fa-person-swimming"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold tracking-tight text-slate-900 block leading-tight">
+                            Bougenville
+                        </span>
+                        <span class="text-xs font-bold tracking-widest text-brand-600 uppercase flex items-center gap-1">
+                            Swimming Club <i class="fa-solid fa-certificate text-[9px] text-bougenville-500"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600">
+                    <a href="#beranda" class="hover:text-brand-600 transition">Beranda</a>
+                    <a href="#tentang" class="hover:text-brand-600 transition">Tentang Kami</a>
+                    <a href="#keunggulan" class="hover:text-brand-600 transition">Keunggulan</a>
+                    <a href="#program" class="hover:text-brand-600 transition">Program Kelas</a>
+                    <a href="#jadwal" class="hover:text-brand-600 transition">Jadwal & Biaya</a>
+                    <a href="#pelatih" class="hover:text-brand-600 transition">Pelatih</a>
+                    <a href="#testimoni" class="hover:text-brand-600 transition">Testimoni</a>
+                    <a href="#faq" class="hover:text-brand-600 transition">FAQ</a>
+                </nav>
+
+                 <!-- Action Button -->
+                <div class="hidden lg:flex items-center gap-3">
+                    <a href="#daftar" class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-700 hover:to-brand-600 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-brand-500/20 hover:shadow-brand-500/40 hover:-translate-y-0.5 transition-all duration-300">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        Daftar Sekarang
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition focus:outline-none" aria-label="Buka Menu">
+                        <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+         <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 py-6 shadow-xl animate-fade-down">
+            <div class="flex flex-col gap-4 text-base font-semibold text-slate-700">
+                <a href="#beranda" class="mobile-nav-link hover:text-brand-600 py-1">Beranda</a>
+                <a href="#tentang" class="mobile-nav-link hover:text-brand-600 py-1">Tentang Kami</a>
+                <a href="#keunggulan" class="mobile-nav-link hover:text-brand-600 py-1">Keunggulan</a>
+                <a href="#program" class="mobile-nav-link hover:text-brand-600 py-1">Program Kelas</a>
+                <a href="#jadwal" class="mobile-nav-link hover:text-brand-600 py-1">Jadwal & Biaya</a>
+                <a href="#pelatih" class="mobile-nav-link hover:text-brand-600 py-1">Pelatih</a>
+                <a href="#testimoni" class="mobile-nav-link hover:text-brand-600 py-1">Testimoni</a>
+                <a href="#faq" class="mobile-nav-link hover:text-brand-600 py-1">FAQ</a>
+                <div class="pt-4 border-t border-slate-100 flex flex-col gap-2">
+                    <a href="#daftar" class="mobile-nav-link text-center w-full bg-brand-600 hover:bg-brand-700 text-white py-3 rounded-xl font-bold shadow-md">
+                        <i class="fa-brands fa-whatsapp mr-1.5"></i> Hubungi & Daftar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+
+         <!-- HERO SECTION -->
+        <section id="beranda" class="relative overflow-hidden pt-12 pb-24 md:pt-20 md:pb-32 bg-gradient-to-b from-brand-50 via-white to-slate-50">
+            
+            <!-- Decorative wave & circles background -->
+            <div class="absolute -top-32 -right-32 w-96 h-96 bg-brand-200/40 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute top-1/2 -left-32 w-96 h-96 bg-cyan-200/30 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-10 right-10 w-72 h-72 bg-bougenville-100/30 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                    
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100/80 border border-brand-200 text-brand-800 text-xs sm:text-sm font-bold shadow-sm">
+                            <span class="w-2.5 h-2.5 rounded-full bg-brand-500 animate-ping"></span>
+                            <span>Pendaftaran Periode Baru Telah Dibuka!</span>
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15]">
+                            Raih Percaya Diri & Prestasi di Setiap <span class="bg-gradient-to-r from-brand-600 via-cyan-600 to-brand-800 bg-clip-text text-transparent">Ayunan Renang</span>
+                        </h1>
+                        <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            Selamat datang di <strong>Bougenville Swimming Club</strong>. Kami menghadirkan program kursus & pembinaan renang terstruktur, aman, dan menyenangkan untuk balita, anak, remaja, hingga dewasa bersama pelatih berlisensi resmi.
+                        </p>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#daftar" class="w-full sm:w-auto text-center px-8 py-4 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-700 hover:to-brand-600 text-white font-bold text-base shadow-xl shadow-brand-500/25 hover:shadow-brand-500/40 hover:-translate-y-0.5 transition duration-300 flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-water"></i>
+                                Booking Jadwal / Trial
+                            </a>
+                            <a href="#program" class="w-full sm:w-auto text-center px-8 py-4 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-bold text-base border border-slate-200 hover:border-slate-300 shadow-sm transition duration-300 flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-list-check text-brand-600"></i>
+                                Lihat Pilihan Program
+                            </a>
+                        </div>
+                        <!-- Mini Highlights / Social Proof -->
+                        <div class="pt-8 border-t border-slate-200/80 grid grid-cols-3 gap-4 text-center lg:text-left">
+                            <div>
+                                <p class="text-2xl sm:text-3xl font-extrabold text-brand-700">500+</p>
+                                <p class="text-xs sm:text-sm font-medium text-slate-500">Siswa Lulus & Aktif</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl sm:text-3xl font-extrabold text-brand-700">100%</p>
+                                <p class="text-xs sm:text-sm font-medium text-slate-500">Pelatih Berlisensi</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl sm:text-3xl font-extrabold text-brand-700">50+</p>
+                                <p class="text-xs sm:text-sm font-medium text-slate-500">Medali Kejuaraan</p>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Right Hero Visual Card -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="relative mx-auto max-w-md lg:max-w-none">
+
+                            <!-- Background glow border -->
+                            <div class="absolute -inset-1.5 bg-gradient-to-r from-brand-500 to-cyan-400 rounded-3xl blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
+                            
+                            <!-- Main Image Container -->
+                            <div class="relative rounded-3xl overflow-hidden shadow-2xl bg-slate-900 border border-slate-100">
+                                <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Anak berenang di Bougenville Swimming Club" 
+                                     class="w-full h-[430px] object-cover object-center transform hover:scale-105 transition-transform duration-700">
+                                
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                                
+                                <div class="absolute bottom-6 left-6 right-6 text-white">
+                                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-semibold mb-2">
+                                        <i class="fa-solid fa-star text-amber-300"></i> Standar Keselamatan Teruji
+                                    </div>
+                                    <h3 class="text-xl font-bold leading-snug">Metode Belajar Terpadu</h3>
+                                    <p class="text-xs text-slate-200 mt-1">Mengutamakan kenyamanan, teknik presisi, dan pembentukan karakter percaya diri.</p>
+                                </div>
+                            </div>
+
+                             <!-- Floating badge 1 -->
+                            <div class="absolute -top-6 -left-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-slate-100 hidden sm:flex items-center gap-3 animate-float">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-shield-heart"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Garansi Keamanan</p>
+                                    <p class="text-sm font-extrabold text-slate-800">Water Safety 1st</p>
+                                </div>
+                            </div>
+
+                            <!-- Floating badge 2 -->
+                            <div class="absolute -bottom-6 -right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-slate-100 hidden sm:flex items-center gap-3 animate-float-delayed">
+                                <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-medal"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Jalur Prestasi</p>
+                                    <p class="text-sm font-extrabold text-slate-800">Binaan Atlet Muda</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- TENTANG KAMI SECTION -->
+        <section id="tentang" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    
+                    <div class="relative order-2 lg:order-1">
+                        <div class="grid grid-cols-2 gap-4">
+                            <img src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Latihan renang anak" 
+                                 class="rounded-2xl shadow-lg object-cover h-64 w-full">
+                            <img src="https://images.unsplash.com/photo-1600965962102-9d260a71890d?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Instruktur renang profesional" 
+                                 class="rounded-2xl shadow-lg object-cover h-64 w-full mt-8">
+                        </div>
+                        <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-brand-900 text-white px-6 py-4 rounded-2xl shadow-xl text-center w-5/6">
+                            <p class="text-sm font-bold tracking-wide text-brand-300">Visi Kami</p>
+                            <p class="text-xs sm:text-sm font-medium mt-1">"Mencetak generasi yang sehat bugar, bermental tangguh, dan berprestasi di kancah akuatik nasional."</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6 order-1 lg:order-2">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brand-50 border border-brand-200 text-brand-700 text-xs font-bold uppercase tracking-wider">
+                            Mengenal Lebih Dekat
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
+                            Tentang <span class="text-brand-600">Bougenville Swimming Club</span>
+                        </h2>
+                         <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                            Didirikan dengan dedikasi tinggi terhadap olahraga renang dan pembinaan generasi muda, <strong>Bougenville Swimming Club</strong> bukan sekadar tempat kursus renang biasa. Kami adalah komunitas pembinaan yang fokus pada pendekatan humanis, sabar, dan terukur.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                            Bagi kami, setiap anak dan individu memiliki ritme adaptasi air yang berbeda. Mulai dari mengatasi rasa takut terhadap air (aquaphobia) hingga mengasah efisiensi tarikan tangan dan kayuhan kaki, pelatih kami senantiasa mendampingi dengan metode interaktif dan menyenangkan.
+                        </p>
+
+                         <!-- Poin Nilai Kami -->
+                        <div class="space-y-3 pt-2">
+                            <div class="flex items-start gap-3">
+                                <div class="mt-1 w-6 h-6 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center flex-shrink-0 text-xs">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-sm">Kurikulum Berjenjang & Sertifikasi Internal</h4>
+                                    <p class="text-xs text-slate-500">Setiap siswa dievaluasi untuk naik ke tingkatan gaya renang berikutnya.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="mt-1 w-6 h-6 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center flex-shrink-0 text-xs">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-sm">Pendampingan Intensif & Rasio Siswa Terjaga</h4>
+                                    <p class="text-xs text-slate-500">Maksimal 4-6 siswa per pelatih untuk kelas reguler demi keamanan dan fokus belajar.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="mt-1 w-6 h-6 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center flex-shrink-0 text-xs">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-sm">Jalur Prestasi Resmi</h4>
+                                    <p class="text-xs text-slate-500">Peluang mengikuti kejuaraan tingkat kota, provinsi, hingga kejuaraan nasional (O2SN, Porprov, Kejurnas).</p>
+                                </div>
+                                  </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- KEUNGGULAN SECTION -->
+        <section id="keunggulan" class="py-20 bg-slate-50 border-y border-slate-200/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-100/60 px-3 py-1 rounded-full">Kelebihan Kami</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Mengapa Memilih Bougenville?</h2>
+                    <p class="text-slate-600 mt-3 text-sm sm:text-base">Kami memberikan pengalaman belajar renang yang menyeluruh: aman bagi pemula, terarah bagi pencari kebugaran, dan disiplin bagi calon atlet.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Card 1 -->
+                    <div class="bg-white p-7 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 border border-slate-100 group">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-600 group-hover:text-white transition duration-300">
+                            <i class="fa-solid fa-id-card-clip"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Pelatih Berlisensi Resmi</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Pelatih kami tersertifikasi oleh badan renang resmi, berpengalaman menangani anak pemula hingga perenang kompetitif.</p>
+                    </div>
+                     <!-- Card 2 -->
+                    <div class="bg-white p-7 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 border border-slate-100 group">
+                        <div class="w-14 h-14 rounded-2xl bg-cyan-50 text-cyan-600 flex items-center justify-center text-2xl mb-6 group-hover:bg-cyan-600 group-hover:text-white transition duration-300">
+                            <i class="fa-solid fa-water-ladder"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Kolam Bersih & Standar</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Berlatih di kolam renang terpilih dengan sirkulasi air higienis, kedalaman bertahap yang aman, dan fasilitas lengkap.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-white p-7 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 border border-slate-100 group">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl mb-6 group-hover:bg-emerald-600 group-hover:text-white transition duration-300">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Rapor Evaluasi Rutin</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Orang tua mendapatkan laporan berkala mengenai perkembangan teknik pernapasan, gaya dada, punggung, maupun bebas anak.</p>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="bg-white p-7 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 border border-slate-100 group">
+                        <div class="w-14 h-14 rounded-2xl bg-bougenville-50 text-bougenville-600 flex items-center justify-center text-2xl mb-6 group-hover:bg-bougenville-600 group-hover:text-white transition duration-300">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Fokus Water Safety</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Tidak hanya sekadar gaya renang, kami membekali siswa keahlian penting cara bertahan (survival floating) saat darurat di air.</p>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+         <!-- PROGRAM KELAS SECTION -->
+        <section id="program" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-14">
+                    <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-100/60 px-3 py-1 rounded-full">Program Pilihan</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Kelas Renang Sesuai Kebutuhan Anda</h2>
+                    <p class="text-slate-600 mt-3 text-sm sm:text-base">Mulai dari langkah pertama mengenal air hingga teknik atletik tingkat tinggi, temukan kelas yang paling tepat untuk Anda dan buah hati.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                     <!-- Program 1: Kids & Pemula -->
+                    <div class="flex flex-col bg-slate-50 rounded-3xl overflow-hidden border border-slate-200/80 hover:shadow-xl hover:border-brand-300 transition-all duration-300 group">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1576610616656-d3aa5d1f4534?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Kelas Anak Pemula" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-brand-800 text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                                Usia 4 - 10 Thn
+                            </span>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition">Kelas Anak & Pemula</h3>
+                                <p class="text-slate-500 text-xs mt-1 mb-4">Pengenalan air yang ceria, hilangkan rasa takut, dan pondasi gaya dada & bebas.</p>
+                                
+                                <ul class="space-y-2 text-xs text-slate-600 border-t border-slate-200 pt-4 mb-6">
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500 text-[10px]"></i> Pengenalan & pernapasan dasar air</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500 text-[10px]"></i> Meluncur & mengapung mandiri</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500 text-[10px]"></i> Rasio murid 1 : 4</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500 text-[10px]"></i> Durasi 60 Menit / sesi</li>
+                                </ul>
+                            </div>
+                            <button onclick="pilihProgram('Kelas Anak & Pemula')" class="w-full py-2.5 px-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-1.5">
+                                <span>Pilih Kelas Ini</span>
+                                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                     <!-- Program 2: Reguler Lanjutan (Popular) -->
+                    <div class="flex flex-col bg-white rounded-3xl overflow-hidden border-2 border-brand-500 shadow-lg hover:shadow-2xl transition-all duration-300 relative group">
+                        <div class="absolute top-0 right-0 bg-brand-600 text-white text-[11px] font-extrabold px-4 py-1 rounded-bl-xl uppercase tracking-wider z-10">
+                            Favorit
+                        </div>
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Kelas Remaja & Lanjutan" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-brand-800 text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                                Usia 8 - 16 Thn
+                            </span>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition">Reguler Lanjutan</h3>
+                                <p class="text-slate-500 text-xs mt-1 mb-4">Penguasaan 4 gaya (Dada, Bebas, Punggung, Kupu-kupu) secara sempurna.</p>
+                                
+                                <ul class="space-y-2 text-xs text-slate-600 border-t border-slate-200 pt-4 mb-6">
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500 text-[10px]"></i> Koreksi teknik & efisiensi kayuhan</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500 text-[10px]"></i> Latihan stamina & daya tahan</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500 text-[10px]"></i> Ujian kenaikan grade & sertifikat</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500 text-[10px]"></i> Durasi 75 Menit / sesi</li>
+                                </ul>
+                            </div>
+                             <button onclick="pilihProgram('Kelas Reguler Lanjutan')" class="w-full py-2.5 px-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-1.5">
+                                <span>Pilih Kelas Ini</span>
+                                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                     <!-- Program 3: Pembinaan Atlet / Prestasi -->
+                    <div class="flex flex-col bg-slate-50 rounded-3xl overflow-hidden border border-slate-200/80 hover:shadow-xl hover:border-brand-300 transition-all duration-300 group">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1560090995-01632a28895b?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Kelas Atlet Prestasi" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-brand-800 text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                                Tim Prestasi
+                            </span>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition">Klub Prestasi (Atlet)</h3>
+                                <p class="text-slate-500 text-xs mt-1 mb-4">Program intensif pembinaan atlet kompetitif untuk kejuaraan renang resmi.</p>
+                                
+                                <ul class="space-y-2 text-xs text-slate-600 border-t border-slate-200 pt-4 mb-6">
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500 text-[10px]"></i> Latihan fisik darat (Dryland) & air</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500 text-[10px]"></i> Analisis stopwatch & video stroke</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500 text-[10px]"></i> Delegasi lomba Kejurda / Nasional</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500 text-[10px]"></i> 3 - 5 kali sesi per minggu</li>
+                                </ul>
+                            </div>
+                            <button onclick="pilihProgram('Klub Prestasi (Atlet)')" class="w-full py-2.5 px-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-1.5">
+                                <span>Pilih Kelas Ini</span>
+                                 <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Program 4: Kelas Privat & Dewasa -->
+                    <div class="flex flex-col bg-slate-50 rounded-3xl overflow-hidden border border-slate-200/80 hover:shadow-xl hover:border-brand-300 transition-all duration-300 group">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Kelas Privat Dewasa" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-brand-800 text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                                1-on-1 / Dewasa
+                            </span>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition">Privat & Dewasa</h3>
+                                <p class="text-slate-500 text-xs mt-1 mb-4">Eksklusif 1 pelatih untuk 1-2 siswa. Jadwal fleksibel, privasi terjamin, cocok untuk kebugaran.</p>
+                                
+                                <ul class="space-y-2 text-xs text-slate-600 border-t border-slate-200 pt-4 mb-6">
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500 text-[10px]"></i> Waktu & lokasi bisa disesuaikan</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500 text-[10px]"></i> Terapi saraf kejepit (HNP) / Skoliosis</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500 text-[10px]"></i> Cepat bisa dalam 4 - 8 sesi</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500 text-[10px]"></i> Pelatih Pria / Wanita tersedia</li>
+                                </ul>
+                            </div>
+                            <button onclick="pilihProgram('Kelas Privat & Dewasa')" class="w-full py-2.5 px-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-1.5">
+                                <span>Pilih Kelas Ini</span>
+                                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                                    </div>
+            </div>
+        </section>
+          <!-- JADWAL & PAKET BIAYA SECTION -->
+        <section id="jadwal" class="py-20 bg-slate-50 border-t border-slate-200/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-100/60 px-3 py-1 rounded-full">Paket Transparan</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Jadwal Sesi & Estimasi Investasi</h2>
+                    <p class="text-slate-600 mt-3 text-sm sm:text-base">Pilihan jadwal latihan fleksibel dengan paket biaya terjangkau untuk masa depan anak.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                     <!-- Jadwal Sesi Latihan Table -->
+                    <div class="lg:col-span-5 bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-200">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900">Jadwal Sesi Tersedia</h3>
+                                <p class="text-xs text-slate-500">Pilih hari & jam yang paling pas dengan agenda Anda</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="font-bold text-sm text-slate-800">Sesi Pagi (Weekday)</span>
+                                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Selasa - Jumat</span>
+                                </div>
+                                <p class="text-xs text-slate-500"><i class="fa-regular fa-clock mr-1"></i> 06.30 - 08.00 WIB & 08.00 - 09.30 WIB</p>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="font-bold text-sm text-slate-800">Sesi Sore (Weekday)</span>
+                                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Selasa - Jumat</span>
+                                </div>
+                                <p class="text-xs text-slate-500"><i class="fa-regular fa-clock mr-1"></i> 15.30 - 17.00 WIB & 16.30 - 18.00 WIB</p>
+                            </div>
+                             <div class="p-3.5 rounded-xl bg-brand-50/60 border border-brand-100">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="font-bold text-sm text-brand-900">Sesi Weekend (Sabtu & Minggu)</span>
+                                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-brand-200 text-brand-800">Paling Populer</span>
+                                </div>
+                                <p class="text-xs text-slate-600 mb-1"><i class="fa-regular fa-clock mr-1"></i> Pagi: 06.30 - 08.00 | 08.00 - 09.30 WIB</p>
+                                <p class="text-xs text-slate-600"><i class="fa-regular fa-clock mr-1"></i> Sore: 15.30 - 17.00 WIB</p>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-slate-500 flex items-start gap-2">
+                            <i class="fa-solid fa-circle-info text-brand-500 mt-0.5"></i>
+                            <span>Jadwal privat dapat menyesuaikan ketersediaan pelatih dan jam buka kolam renang yang dipilih.</span>
+                        </div>
+                    </div>
+
+                     <!-- Paket Biaya Kursus -->
+                    <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <!-- Paket Reguler Bulanan -->
+                        <div class="bg-white p-6 sm:p-7 rounded-3xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                            <div>
+                                <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">Paket Reguler</span>
+                                <h3 class="text-xl font-extrabold text-slate-900 mt-1">Kelas Komunitas</h3>
+                                <div class="mt-4 mb-6">
+                                    <span class="text-3xl font-black text-slate-900">Rp 350.000</span>
+                                    <span class="text-xs text-slate-500">/ bulan (4x sesi)</span>
+                                </div>
+                                <ul class="space-y-3 text-xs text-slate-600 mb-6">
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> 1x Pertemuan per minggu (60-75 menit)</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Grup 4-6 siswa</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Rapor perkembangan per level</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Diskon pendaftaran saudara kandung</li>
+                                </ul>
+                            </div>
+                            <a href="#daftar" onclick="pilihPaket('Paket Reguler (Rp 350.000/bln)')" class="block text-center py-3 px-4 rounded-xl bg-slate-100 hover:bg-brand-600 hover:text-white font-bold text-xs text-slate-700 transition">
+                                Daftar Paket Ini
+                            </a>
+                        </div>
+
+                         <!-- Paket Intensif / Privat -->
+                        <div class="bg-gradient-to-b from-brand-900 to-slate-900 text-white p-6 sm:p-7 rounded-3xl shadow-xl border border-brand-700 flex flex-col justify-between relative overflow-hidden">
+                            <div class="absolute -right-8 -top-8 w-28 h-28 bg-brand-500/20 rounded-full blur-xl"></div>
+                            <div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Paket Eksklusif</span>
+                                    <span class="bg-bougenville-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">Garansi Cepat Bisa</span>
+                                </div>
+                                <h3 class="text-xl font-extrabold text-white mt-1">Paket Privat 1-on-1</h3>
+                                <div class="mt-4 mb-6">
+                                    <span class="text-3xl font-black text-white">Rp 750.000</span>
+                                    <span class="text-xs text-slate-300">/ paket (4x sesi)</span>
+                                </div>
+                                <ul class="space-y-3 text-xs text-slate-200 mb-6">
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> 1 Pelatih khusus untuk 1 siswa</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Jadwal & jam fleksibel</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Cocok untuk fobia air & terapi kesehatan</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Tersedia pelatih wanita untuk muslimah</li>
+                                </ul>
+                            </div>
+                            <a href="#daftar" onclick="pilihPaket('Paket Privat 1-on-1 (Rp 750.000/paket)')" class="block text-center py-3 px-4 rounded-xl bg-gradient-to-r from-brand-500 to-cyan-400 hover:opacity-90 font-bold text-xs text-slate-950 transition shadow-lg">
+                                Daftar Privat Eksklusif
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                 </div>
+        </section>
+
+         <!-- PELATIH KAMI SECTION -->
+        <section id="pelatih" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-100/60 px-3 py-1 rounded-full">Tim Profesional</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Pelatih Kami yang Berdedikasi</h2>
+                    <p class="text-slate-600 mt-3 text-sm sm:text-base">Membimbing dengan kesabaran, teknik ilmiah modern, dan menjunjung tinggi standar keselamatan air internasional.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Coach 1 -->
+                    <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200/80 hover:shadow-lg transition">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" 
+                             alt="Pelatih Kepala" 
+                             class="w-full h-64 object-cover object-top">
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-brand-600 uppercase tracking-wider">Head Coach</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-1">Coach Rendy Pratama, S.Or</h3>
+                            <p class="text-xs text-slate-500 mb-3">Lisensi Pelatih Akuatik Nasional • 10+ Thn Pengalaman</p>
+                            <p class="text-xs text-slate-600 leading-relaxed">Spesialis pembinaan stroke biomekanik renang gaya bebas dan kupu-kupu untuk atlet kompetitif.</p>
+                        </div>
+                    </div>
+                    <!-- Coach 2 -->
+                    <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200/80 hover:shadow-lg transition">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80" 
+                             alt="Pelatih Anak & Toddler" 
+                             class="w-full h-64 object-cover object-top">
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-bougenville-600 uppercase tracking-wider">Kids & Toddler Specialist</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-1">Coach Sarah Amanda</h3>
+                            <p class="text-xs text-slate-500 mb-3">Sertifikasi Early Childhood Water Safety • 6+ Thn Pengalaman</p>
+                            <p class="text-xs text-slate-600 leading-relaxed">Sangat sabar, ahli dalam pendekatan psikologi anak agar tidak takut air dan senang berenang.</p>
+                        </div>
+                    </div>
+                    <!-- Coach 3 -->
+                    <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200/80 hover:shadow-lg transition">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" 
+                             alt="Pelatih Dewasa & Terapi" 
+                             class="w-full h-64 object-cover object-top">
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Adult & Therapy Specialist</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-1">Coach Dimas Wicaksono</h3>
+                            <p class="text-xs text-slate-500 mb-3">Sertifikasi Aquatic Physical Fitness • 8+ Thn Pengalaman</p>
+                            <p class="text-xs text-slate-600 leading-relaxed">Berpengalaman melatih orang dewasa dari nol serta pemulihan kebugaran pasca cedera fisik.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+         <!-- TESTIMONI ORANG TUA & SISWA -->
+        <section id="testimoni" class="py-20 bg-brand-900 text-white relative overflow-hidden">
+            <div class="absolute -right-32 -bottom-32 w-96 h-96 bg-brand-700/50 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-xs font-bold text-cyan-300 uppercase tracking-widest bg-brand-800 px-3 py-1 rounded-full border border-brand-700">Cerita Kepuasan</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">Apa Kata Orang Tua & Murid Kami?</h2>
+                    <p class="text-slate-300 mt-3 text-sm sm:text-base">Melihat senyum dan rasa percaya diri siswa di dalam air adalah kebanggaan terbesar bagi kami.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Testi 1 -->
+                    <div class="bg-white/10 backdrop-blur-md p-7 rounded-2xl border border-white/10 flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-amber-300 text-xs gap-1 mb-4">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-slate-200 text-xs sm:text-sm italic leading-relaxed">
+                                "Anak saya (6 tahun) awalnya trauma sama air karena pernah tersedak di kolam umum. Alhamdulillah di Bougenville Swimming Club, Coach Sarah telaten banget. Dalam 4 kali pertemuan sudah berani berenang sendiri tanpa pelampung!"
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3 pt-6 mt-6 border-t border-white/10">
+                            <div class="w-10 h-10 rounded-full bg-brand-500 flex items-center justify-center font-bold text-sm text-white">
+                                IB
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-white">Ibu Bella Safitri</p>
+                                <p class="text-[11px] text-cyan-300">Orang tua Kiano (Kelas Pemula)</p>
+                                </div>
+                        </div>
+                    </div>
+
+                    <!-- Testi 2 -->
+                    <div class="bg-white/10 backdrop-blur-md p-7 rounded-2xl border border-white/10 flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-amber-300 text-xs gap-1 mb-4">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-slate-200 text-xs sm:text-sm italic leading-relaxed">
+                                "Saya mendaftar kelas dewasa untuk mengatasi sakit pinggang dan melatih pernapasan. Coach Dimas sangat profesional mengajarkan teknik pernapasan yang tepat. Sekarang badan jauh lebih bugar dan renang gaya dada lancar."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3 pt-6 mt-6 border-t border-white/10">
+                            <div class="w-10 h-10 rounded-full bg-cyan-500 flex items-center justify-center font-bold text-sm text-white">
+                                AP
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-white">Agung Prasetyo (34 th)</p>
+                                <p class="text-[11px] text-cyan-300">Member Kelas Dewasa & Privat</p>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Testi 3 -->
+                    <div class="bg-white/10 backdrop-blur-md p-7 rounded-2xl border border-white/10 flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-amber-300 text-xs gap-1 mb-4">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-slate-200 text-xs sm:text-sm italic leading-relaxed">
+                                "Pembinaan tim prestasinya mantap sekali! Pelatih selalu mengevaluasi catatan waktu dan teknik finis. Berkat latihan rutin di sini, putri kami berhasil meraih medali perak di kejuaraan renang antarpelajar tingkat kota."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3 pt-6 mt-6 border-t border-white/10">
+                            <div class="w-10 h-10 rounded-full bg-bougenville-500 flex items-center justify-center font-bold text-sm text-white">
+                                DW
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-white">Pak Hendra Wijaya</p>
+                                <p class="text-[11px] text-cyan-300">Orang tua Naura (Tim Prestasi)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- FORMULIR PENDAFTARAN & WHATSAPP GENERATOR -->
+        <section id="daftar" class="py-20 bg-slate-50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-slate-200">
+                    <div class="text-center max-w-xl mx-auto mb-8">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold mb-3">
+                            <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i> Respon Cepat 24 Jam
+                        </span>
+                        <h2 class="text-3xl font-extrabold text-slate-900">Form Pendaftaran & Konsultasi</h2>
+                        <p class="text-slate-500 text-sm mt-2">Isi formulir di bawah ini, sistem kami akan langsung menghubungkan Anda ke WhatsApp Admin Bougenville Swimming Club dengan format pesan teratur.</p>
+                    </div>
+                    <form id="formPendaftaran" class="space-y-6" onsubmit="kirimWhatsApp(event)">
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+                              <!-- Nama Lengkap Calon Siswa -->
+                            <div>
+                                <label for="nama" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Nama Calon Siswa / Anak *</label>
+                                <input type="text" id="nama" required placeholder="Contoh: Muhammad Kevin" 
+                                       class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm">
+                            </div>
+                            <!-- Usia -->
+                            <div>
+                                <label for="usia" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Usia (Tahun) *</label>
+                                <input type="number" id="usia" required placeholder="Contoh: 7" min="3" max="70"
+                                       class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <!-- Pilihan Program -->
+                            <div>
+                                <label for="programPilihan" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Pilihan Program *</label>
+                                <select id="programPilihan" required 
+                                        class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm bg-white">
+                                    <option value="" disabled selected>Pilih Program...</option>
+                                    <option value="Kelas Anak & Pemula">Kelas Anak & Pemula (Usia 4-10 Thn)</option>
+                                    <option value="Kelas Reguler Lanjutan">Kelas Reguler Lanjutan (4 Gaya)</option>
+                                    <option value="Klub Prestasi (Atlet)">Klub Prestasi (Binaan Atlet)</option>
+                                    <option value="Kelas Privat & Dewasa">Kelas Privat & Dewasa (1-on-1)</option>
+                                </select>
+                            </div>
+                            <!-- Tingkat Kemampuan Saat Ini -->
+                            <div>
+                                <label for="level" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Pengalaman Renang Saat Ini</label>
+                                <select id="level" 
+                                        class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm bg-white">
+                                    <option value="Belum bisa sama sekali / Takut air">Belum bisa sama sekali / Takut air</option>
+                                    <option value="Bisa mengapung sedikit">Bisa mengapung sedikit</option>
+                                    <option value="Sudah bisa 1 gaya (Dada/Bebas)">Sudah bisa 1 gaya (Dada/Bebas)</option>
+                                    <option value="Sudah lancar beberapa gaya">Sudah lancar beberapa gaya</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Preferensi Hari / Sesi -->
+                        <div>
+                            <label for="preferensiHari" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Preferensi Hari & Waktu</label>
+                            <input type="text" id="preferensiHari" placeholder="Contoh: Sabtu & Minggu Pagi, atau Selasa & Kamis Sore" 
+                                   class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm">
+                        </div>
+                        <!-- Catatan Tambahan -->
+                        <div>
+                            <label for="catatan" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Catatan Khusus (Opsional)</label>
+                            <textarea id="catatan" rows="3" placeholder="Contoh: Ada riwayat asma ringan, butuh pelatih perempuan, atau request trial." 
+                                      class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm"></textarea>
+                        </div>
+                        <!-- Tombol Submit -->
+                        <div class="pt-2">
+                            <button type="submit" 
+                                    class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-700 hover:to-teal-600 text-white font-extrabold text-base shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:-translate-y-0.5 transition duration-300 flex items-center justify-center gap-3">
+                                <i class="fa-brands fa-whatsapp text-2xl"></i>
+                                <span>Kirim Pendaftaran via WhatsApp</span>
+                            </button>
+                            <p class="text-center text-xs text-slate-400 mt-3">
+                                <i class="fa-solid fa-lock mr-1"></i> Data Anda aman dan hanya digunakan untuk konfirmasi jadwal latihan.
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- FAQ ACCORDION SECTION -->
+        <section id="faq" class="py-20 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-100/60 px-3 py-1 rounded-full">Pertanyaan Umum</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Frequently Asked Questions</h2>
+                    <p class="text-slate-600 mt-3 text-sm">Informasi penting yang sering ditanyakan oleh calon member kami.</p>
+                </div>
+                <div class="space-y-4" id="faqAccordion">
+
+                     <!-- FAQ 1 -->
+                    <div class="faq-item border border-slate-200 rounded-2xl overflow-hidden transition">
+                        <button class="faq-btn w-full p-5 text-left font-bold text-slate-800 flex justify-between items-center hover:bg-slate-50 transition">
+                            <span class="text-sm sm:text-base">Mulai dari usia berapa anak bisa bergabung di Bougenville Swimming Club?</span>
+                            <i class="fa-solid fa-chevron-down text-brand-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-5 pb-5 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-100 pt-3">
+                            Kami menerima pendaftaran mulai usia 3,5 - 4 tahun untuk program *water adaptation & kids swim*. Anak akan diajarkan mengenal air dengan metode bermain yang aman tanpa paksaan.
+                        </div>
+                    </div>
+                    <!-- FAQ 2 -->
+                    <div class="faq-item border border-slate-200 rounded-2xl overflow-hidden transition">
+                        <button class="faq-btn w-full p-5 text-left font-bold text-slate-800 flex justify-between items-center hover:bg-slate-50 transition">
+                            <span class="text-sm sm:text-base">Apakah ada sesi uji coba (Free Trial) sebelum mendaftar resmi?</span>
+                            <i class="fa-solid fa-chevron-down text-brand-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-5 pb-5 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-100 pt-3">
+                            Ya, kami menyediakan 1x sesi trial / penyesuaian untuk melihat interaksi calon siswa dengan pelatih dan lingkungan kolam. Silakan hubungi admin kami melalui tombol WhatsApp untuk menjadwalkan trial.
+                        </div>
+                    </div>
+                    <!-- FAQ 3 -->
+                    <div class="faq-item border border-slate-200 rounded-2xl overflow-hidden transition">
+                        <button class="faq-btn w-full p-5 text-left font-bold text-slate-800 flex justify-between items-center hover:bg-slate-50 transition">
+                            <span class="text-sm sm:text-base">Bagaimana jika siswa berhalangan hadir karena sakit atau ada ujian sekolah?</span>
+                            <i class="fa-solid fa-chevron-down text-brand-600 transition-transform duration-300"></i>
+                        </button>
+                         <div class="faq-content hidden px-5 pb-5 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-100 pt-3">
+                            Siswa berhak mendapatkan sesi pengganti (*make-up class*) maksimal 1 kali dalam sebulan dengan syarat menginformasikan kepada admin minimal 6 jam sebelum sesi latihan dimulai.
+                        </div>
+                    </div>
+
+                     <!-- FAQ 4 -->
+                    <div class="faq-item border border-slate-200 rounded-2xl overflow-hidden transition">
+                        <button class="faq-btn w-full p-5 text-left font-bold text-slate-800 flex justify-between items-center hover:bg-slate-50 transition">
+                            <span class="text-sm sm:text-base">Apakah biaya kursus sudah termasuk tiket masuk kolam renang?</span>
+                            <i class="fa-solid fa-chevron-down text-brand-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-5 pb-5 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-100 pt-3">
+                            Tergantung lokasi kolam renang mitra yang dipilih. Sebagian paket sudah mencakup tiket masuk siswa (tiket orang tua pendamping mengikuti kebijakan pengelola kolam). Hubungi admin kami untuk detail kolam di domisili Anda.
+                        </div>
+                    </div>
+                    <!-- FAQ 5 -->
+                    <div class="faq-item border border-slate-200 rounded-2xl overflow-hidden transition">
+                        <button class="faq-btn w-full p-5 text-left font-bold text-slate-800 flex justify-between items-center hover:bg-slate-50 transition">
+                            <span class="text-sm sm:text-base">Apakah tersedia pelatih perempuan untuk siswi atau ibu-ibu?</span>
+                            <i class="fa-solid fa-chevron-down text-brand-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-5 pb-5 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-100 pt-3">
+                            Tentu saja! Kami memiliki tim pelatih wanita bersertifikat untuk kelas privat muslimah maupun anak-anak usia dini demi menjaga kenyamanan maksimal.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+     <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-300 pt-16 pb-10 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                
+                <!-- Col 1: Brand Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-cyan-400 flex items-center justify-center text-white text-lg shadow-md">
+                            <i class="fa-solid fa-person-swimming"></i>
+                        </div>
+                        <div>
+                            <span class="text-lg font-bold text-white block leading-tight">Bougenville</span>
+                            <span class="text-[10px] font-bold text-cyan-400 uppercase tracking-widest">Swimming Club</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Klub renang terkemuka dengan komitmen membentuk karakter percaya diri, kebugaran prima, serta prestasi olahraga akuatik berkelanjutan.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="https://instagram.com" target="_blank" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-brand-600 text-slate-300 hover:text-white flex items-center justify-center text-sm transition">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-brand-600 text-slate-300 hover:text-white flex items-center justify-center text-sm transition">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-brand-600 text-slate-300 hover:text-white flex items-center justify-center text-sm transition">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <a href="https://youtube.com" target="_blank" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-brand-600 text-slate-300 hover:text-white flex items-center justify-center text-sm transition">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                 <!-- Col 2: Program Cepat -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-brand-500 pl-2">Program Kami</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li><a href="#program" class="hover:text-cyan-400 transition">Kelas Anak & Pemula (Kids Swim)</a></li>
+                        <li><a href="#program" class="hover:text-cyan-400 transition">Kelas 4 Gaya Renang Lanjutan</a></li>
+                        <li><a href="#program" class="hover:text-cyan-400 transition">Pembinaan Atlet & Klub Prestasi</a></li>
+                        <li><a href="#program" class="hover:text-cyan-400 transition">Kursus Privat Dewasa & Terapi HNP</a></li>
+                        <li><a href="#daftar" class="hover:text-cyan-400 transition">Sesi Free Trial / Evaluasi</a></li>
+                    </ul>
+                </div>
+                <!-- Col 3: Link Navigasi -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-brand-500 pl-2">Navigasi</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li><a href="#beranda" class="hover:text-cyan-400 transition">Beranda</a></li>
+                        <li><a href="#tentang" class="hover:text-cyan-400 transition">Tentang Bougenville Club</a></li>
+                        <li><a href="#keunggulan" class="hover:text-cyan-400 transition">Keunggulan & Metode</a></li>
+                        <li><a href="#jadwal" class="hover:text-cyan-400 transition">Jadwal & Biaya Kursus</a></li>
+                        <li><a href="#pelatih" class="hover:text-cyan-400 transition">Profil Coach & Lisensi</a></li>
+                        <li><a href="#faq" class="hover:text-cyan-400 transition">Tanya Jawab (FAQ)</a></li>
+                    </ul>
+                </div>
+                <!-- Col 4: Kontak & Alamat -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-brand-500 pl-2">Hubungi Kami</h4>
+                    <ul class="space-y-3 text-xs text-slate-400">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-brands fa-whatsapp text-emerald-400 text-sm mt-0.5"></i>
+                            <span>Admin Center: +62 812-3456-7890</span>
+                        </li>
+                         <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-envelope text-brand-400 text-sm mt-0.5"></i>
+                            <span>info@bougenvilleswim.com</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-location-dot text-rose-400 text-sm mt-0.5"></i>
+                            <span>Kolam Renang Gelanggang Olahraga & Kolam Mitra Bougenville</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-clock text-amber-400 text-sm mt-0.5"></i>
+                            <span>Selasa - Minggu: 06.00 - 18.00 WIB</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+              <!-- Bottom Copyright -->
+            <div class="pt-8 border-t border-slate-800 text-center text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 Bougenville Swimming Club. Hak Cipta Dilindungi.</p>
+                <div class="flex items-center gap-4 text-[11px]">
+                    <a href="#" class="hover:text-slate-400">Kebijakan Privasi</a>
+                    <span>•</span>
+                    <a href="#" class="hover:text-slate-400">Syarat & Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/628973194359S?text=Halo%20Admin%20Bougenville%20Swimming%20Club,%20saya%20ingin%20tanya%20informasi%20pendaftaran%20les%20renang." 
+       target="_blank" 
+       id="floatingWa"
+       class="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-xl shadow-emerald-500/40 hover:scale-110 transition duration-300 group"
+       title="Chat Admin via WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="absolute right-16 bg-slate-900 text-white text-xs px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            Tanya Admin via WA
+        </span>
+    </a>
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
