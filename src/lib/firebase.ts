@@ -2,7 +2,7 @@ import { initializeApp, getApps, getApp, FirebaseApp } from "firebase/app";
 import { getAuth, Auth } from "firebase/auth";
 import { getFirestore, Firestore } from "firebase/firestore";
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "",
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "",
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "",
@@ -30,6 +30,22 @@ if (typeof window !== "undefined" || isFirebaseConfigured()) {
     db = getFirestore(app);
   } catch (error) {
     console.warn("Inisialisasi Firebase gagal atau konfigurasi belum lengkap:", error);
+  }
+}
+
+export function getClientDb(): Firestore | null {
+  if (db) return db;
+  try {
+    if (!getApps().length) {
+      app = initializeApp(firebaseConfig);
+    } else {
+      app = getApp();
+    }
+    db = getFirestore(app);
+    return db;
+  } catch (err) {
+    console.error("getClientDb error:", err);
+    return null;
   }
 }
 

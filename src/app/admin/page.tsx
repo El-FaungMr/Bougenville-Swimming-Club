@@ -4,8 +4,9 @@ import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Logo from "@/components/Logo";
-import { auth, isFirebaseConfigured } from "@/lib/firebase";
+import { auth, isFirebaseConfigured, getClientDb } from "@/lib/firebase";
 import { onAuthStateChanged, signOut, User } from "firebase/auth";
+import { collection, query, orderBy, getDocs, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { RegistrationRecord, RegistrationStatus } from "@/lib/types";
 import { REGISTRATION_STATUSES, PROGRAMS, CLUB_INFO } from "@/lib/constants";
 import { buildAdminContactParentWhatsAppUrl } from "@/lib/whatsapp";
@@ -92,23 +93,42 @@ export default function AdminDashboardPage() {
     }
   }, [router]);
 
-  // 2. Ambil data pendaftaran dari backend
+  // 2. Ambil data pendaftaran dari Cloud Firestore atau Admin API
   const fetchRegistrations = async () => {
     setDataLoading(true);
     setErrorMessage(null);
     try {
-      const res = await fetch("/api/admin/registrations", {
-        headers: {
-          "x-admin-email": adminEmail,
-        },
-      });
+      let loadedRecords: RegistrationRecord[] = [];
 
-      const json = await res.json();
-      if (!res.ok || !json.success) {
-        throw new Error(json.error || "Gagal memuat data pendaftaran.");
+      // A. Coba ambil langsung dari Cloud Firestore menggunakan Client SDK (authenticated admin)
+      const clientDb = getClientDb();
+      if (clientDb && auth?.currentUser) {
+        try {
+          const q = query(collection(clientDb, "registrations"), orderBy("createdAt", "desc"));
+          const snap = await getDocs(q);
+          if (!snap.empty) {
+            loadedRecords = snap.docs.map((d) => d.data() as RegistrationRecord);
+          }
+        } catch (firestoreErr) {
+          console.warn("Direct Firestore read in Admin Dashboard:", firestoreErr);
+        }
       }
 
-      setRegistrations(json.data || []);
+      // B. Fallback ke Admin API route jika direct Firestore belum mendapatkan data
+      if (loadedRecords.length === 0) {
+        const res = await fetch("/api/admin/registrations", {
+          headers: {
+            "x-admin-email": adminEmail,
+          },
+        });
+
+        const json = await res.json();
+        if (res.ok && json.success && Array.isArray(json.data)) {
+          loadedRecords = json.data;
+        }
+      }
+
+      setRegistrations(loadedRecords);
     } catch (err: any) {
       console.error("Fetch error:", err);
       setErrorMessage(err.message || "Gagal menghubungi server database.");
@@ -151,23 +171,38 @@ export default function AdminDashboardPage() {
     setSaveLoading(true);
 
     try {
-      const res = await fetch("/api/admin/registrations", {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          "x-admin-email": adminEmail,
-        },
-        body: JSON.stringify({
-          id: selectedRecord.id,
-          status: editStatus,
-          agreedSchedule: editAgreedSchedule,
-          adminNotes: editAdminNotes,
-        }),
-      });
+      // A. Update langsung ke Cloud Firestore via Client SDK
+      const clientDb = getClientDb();
+      if (clientDb && auth?.currentUser) {
+        try {
+          await updateDoc(doc(clientDb, "registrations", selectedRecord.id), {
+            status: editStatus,
+            agreedSchedule: editAgreedSchedule,
+            adminNotes: editAdminNotes,
+            updatedAt: new Date().toISOString(),
+          });
+        } catch (clientErr) {
+          console.warn("Direct Firestore update error:", clientErr);
+        }
+      }
 
-      const json = await res.json();
-      if (!res.ok || !json.success) {
-        throw new Error(json.error || "Gagal memperbarui data pendaftaran.");
+      // B. Panggil juga Admin API route
+      try {
+        await fetch("/api/admin/registrations", {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "x-admin-email": adminEmail,
+          },
+          body: JSON.stringify({
+            id: selectedRecord.id,
+            status: editStatus,
+            agreedSchedule: editAgreedSchedule,
+            adminNotes: editAdminNotes,
+          }),
+        });
+      } catch (apiErr) {
+        console.warn("Admin API patch error:", apiErr);
       }
 
       // Update state lokal
@@ -211,16 +246,26 @@ export default function AdminDashboardPage() {
     setDeleteLoading(true);
 
     try {
-      const res = await fetch(`/api/admin/registrations?id=${deleteConfirmRecord.id}`, {
-        method: "DELETE",
-        headers: {
-          "x-admin-email": adminEmail,
-        },
-      });
+      // A. Hapus langsung dari Cloud Firestore via Client SDK
+      const clientDb = getClientDb();
+      if (clientDb && auth?.currentUser) {
+        try {
+          await deleteDoc(doc(clientDb, "registrations", deleteConfirmRecord.id));
+        } catch (clientErr) {
+          console.warn("Direct Firestore delete error:", clientErr);
+        }
+      }
 
-      const json = await res.json();
-      if (!res.ok || !json.success) {
-        throw new Error(json.error || "Gagal menghapus pendaftaran.");
+      // B. Panggil juga Admin API route
+      try {
+        await fetch(`/api/admin/registrations?id=${deleteConfirmRecord.id}`, {
+          method: "DELETE",
+          headers: {
+            "x-admin-email": adminEmail,
+          },
+        });
+      } catch (apiErr) {
+        console.warn("Admin API delete error:", apiErr);
       }
 
       setRegistrations((prev) => prev.filter((r) => r.id !== deleteConfirmRecord.id));

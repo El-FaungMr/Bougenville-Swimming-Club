@@ -1,22 +1,21 @@
 import { getFirestore as getAdminFirestore } from "firebase-admin/firestore";
-import { getApps, initializeApp, cert, App } from "firebase-admin/app";
+import { getApps as getAdminApps, initializeApp as initAdminApp, cert, App as AdminApp } from "firebase-admin/app";
+import { doc, setDoc } from "firebase/firestore";
+import { getClientDb } from "./firebase";
 import { RegistrationRecord } from "./types";
-import fs from "fs";
-import path from "path";
 
-let adminApp: App | undefined;
+let adminApp: AdminApp | undefined;
 
-// Inisialisasi Firebase Admin SDK secara aman jika credentials tersedia
+// Inisialisasi Firebase Admin SDK HANYA jika service account credentials tersedia
 function getAdminDb() {
   if (adminApp) {
     return getAdminFirestore(adminApp);
   }
 
-  // Opsi 1: Cek env FIREBASE_SERVICE_ACCOUNT_KEY (JSON string)
   if (process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
     try {
       const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
-      adminApp = initializeApp({
+      adminApp = initAdminApp({
         credential: cert(serviceAccount),
       });
       return getAdminFirestore(adminApp);
@@ -25,48 +24,17 @@ function getAdminDb() {
     }
   }
 
-  // Opsi 2: Default ADC (Google Application Default Credentials) jika di Firebase App Hosting / Cloud Run
-  if (process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID && !getApps().length) {
-    try {
-      adminApp = initializeApp({
-        projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-      });
-      return getAdminFirestore(adminApp);
-    } catch (e) {
-      // Tidak dapat menggunakan Admin SDK tanpa credentials
-    }
-  }
-
   return null;
 }
 
-// File fallback untuk lingkungan pengujian lokal offline sebelum user memasang Firebase credentials
-const LOCAL_STORAGE_FILE = path.join(process.cwd(), ".local_registrations_dev.json");
-
-function readLocalDevRegistrations(): RegistrationRecord[] {
-  try {
-    if (fs.existsSync(LOCAL_STORAGE_FILE)) {
-      const data = fs.readFileSync(LOCAL_STORAGE_FILE, "utf-8");
-      return JSON.parse(data);
-    }
-  } catch (err) {
-    console.error("Gagal membaca local storage dev:", err);
-  }
-  return [];
-}
-
-function writeLocalDevRegistrations(records: RegistrationRecord[]) {
-  try {
-    fs.writeFileSync(LOCAL_STORAGE_FILE, JSON.stringify(records, null, 2), "utf-8");
-  } catch (err) {
-    console.error("Gagal menulis local storage dev:", err);
-  }
-}
-
 /**
- * Menyimpan data pendaftaran baru ke Firestore atau storage dev
+ * Menyimpan data pendaftaran baru ke Cloud Firestore.
+ * Menggunakan Firebase Admin SDK (jika Service Account ada) atau Firebase Client SDK di server.
+ * Tanpa menggunakan filesystem lokal sementara.
  */
-export async function saveRegistration(record: RegistrationRecord): Promise<{ success: boolean; storage: "firestore" | "local_dev"; error?: string }> {
+export async function saveRegistration(
+  record: RegistrationRecord
+): Promise<{ success: boolean; storage: "firestore"; error?: string }> {
   try {
     const adminDb = getAdminDb();
     if (adminDb) {
@@ -74,19 +42,28 @@ export async function saveRegistration(record: RegistrationRecord): Promise<{ su
       return { success: true, storage: "firestore" };
     }
 
-    // Jika Admin SDK belum ada kredensial, simpan ke file dev storage aman di server
-    const current = readLocalDevRegistrations();
-    current.unshift(record);
-    writeLocalDevRegistrations(current);
-    return { success: true, storage: "local_dev" };
+    // Jika tanpa Admin SDK Service Account, gunakan Client SDK Firestore dengan kredensial project
+    const clientDb = getClientDb();
+    if (!clientDb) {
+      throw new Error(
+        "Koneksi Firebase belum terkonfigurasi. Pastikan NEXT_PUBLIC_FIREBASE_API_KEY dan NEXT_PUBLIC_FIREBASE_PROJECT_ID sudah diatur di Environment Variables."
+      );
+    }
+
+    await setDoc(doc(clientDb, "registrations", record.id), record);
+    return { success: true, storage: "firestore" };
   } catch (error: any) {
-    console.error("Error saving registration to database:", error);
-    return { success: false, storage: "local_dev", error: error.message || "Gagal menyimpan ke database." };
+    console.error("Error saving registration to Cloud Firestore:", error);
+    return {
+      success: false,
+      storage: "firestore",
+      error: error.message || "Gagal menyimpan pendaftaran ke Cloud Firestore.",
+    };
   }
 }
 
 /**
- * Mengambil daftar pendaftaran (hanya untuk Admin API)
+ * Mengambil daftar pendaftaran (hanya untuk Admin API jika Service Account tersedia)
  */
 export async function getAllRegistrations(): Promise<RegistrationRecord[]> {
   try {
@@ -97,18 +74,18 @@ export async function getAllRegistrations(): Promise<RegistrationRecord[]> {
         .orderBy("createdAt", "desc")
         .get();
 
-      return snapshot.docs.map((doc) => doc.data() as RegistrationRecord);
+      return snapshot.docs.map((d) => d.data() as RegistrationRecord);
     }
 
-    return readLocalDevRegistrations();
+    return [];
   } catch (error) {
-    console.error("Error fetching registrations:", error);
-    return readLocalDevRegistrations();
+    console.error("Error fetching registrations in Admin API:", error);
+    return [];
   }
 }
 
 /**
- * Memperbarui status / catatan pendaftaran oleh admin
+ * Memperbarui status / catatan pendaftaran oleh admin melalui backend
  */
 export async function updateRegistrationById(
   id: string,
@@ -116,32 +93,23 @@ export async function updateRegistrationById(
 ): Promise<boolean> {
   try {
     const adminDb = getAdminDb();
-    const updatedData = {
-      ...updates,
-      updatedAt: new Date().toISOString(),
-    };
-
     if (adminDb) {
+      const updatedData = {
+        ...updates,
+        updatedAt: new Date().toISOString(),
+      };
       await adminDb.collection("registrations").doc(id).update(updatedData);
-      return true;
-    }
-
-    const current = readLocalDevRegistrations();
-    const index = current.findIndex((r) => r.id === id);
-    if (index !== -1) {
-      current[index] = { ...current[index], ...updatedData };
-      writeLocalDevRegistrations(current);
       return true;
     }
     return false;
   } catch (error) {
-    console.error("Error updating registration:", error);
+    console.error("Error updating registration in Admin API:", error);
     return false;
   }
 }
 
 /**
- * Menghapus pendaftaran oleh admin
+ * Menghapus pendaftaran oleh admin melalui backend
  */
 export async function deleteRegistrationById(id: string): Promise<boolean> {
   try {
@@ -150,13 +118,9 @@ export async function deleteRegistrationById(id: string): Promise<boolean> {
       await adminDb.collection("registrations").doc(id).delete();
       return true;
     }
-
-    const current = readLocalDevRegistrations();
-    const filtered = current.filter((r) => r.id !== id);
-    writeLocalDevRegistrations(filtered);
-    return true;
+    return false;
   } catch (error) {
-    console.error("Error deleting registration:", error);
+    console.error("Error deleting registration in Admin API:", error);
     return false;
   }
 }

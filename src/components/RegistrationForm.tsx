@@ -6,6 +6,8 @@ import Link from "next/link";
 import { PROGRAMS, SWIMMING_LEVELS, CLUB_INFO } from "@/lib/constants";
 import { RegistrationInput, RegistrationRecord } from "@/lib/types";
 import { buildRegistrationWhatsAppUrl } from "@/lib/whatsapp";
+import { doc, setDoc } from "firebase/firestore";
+import { getClientDb } from "@/lib/firebase";
 import {
   CheckCircle2,
   AlertCircle,
@@ -16,6 +18,15 @@ import {
   Sparkles,
   Info,
 } from "lucide-react";
+
+function generateRegistrationId(): string {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  const randomChars = Math.random().toString(36).substring(2, 6).toUpperCase();
+  return `BSC-${year}${month}${day}-${randomChars}`;
+}
 
 export default function RegistrationForm() {
   const searchParams = useSearchParams();
@@ -76,6 +87,10 @@ export default function RegistrationForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Mencegah duplikasi data akibat klik berulang (double click protection)
+    if (loading) return;
+
     setErrorMessage(null);
 
     // Validasi Frontend
@@ -92,8 +107,8 @@ export default function RegistrationForm() {
       return;
     }
     const cleanPhone = formData.parentWhatsapp.replace(/[^0-9]/g, "");
-    if (cleanPhone.length < 9) {
-      setErrorMessage("Nomor WhatsApp orang tua tidak valid (minimal 9 digit).");
+    if (cleanPhone.length < 9 || cleanPhone.length > 16) {
+      setErrorMessage("Nomor WhatsApp orang tua tidak valid (minimal 9 digit angka).");
       return;
     }
     if (!formData.preferredSchedule.trim()) {
@@ -108,30 +123,86 @@ export default function RegistrationForm() {
     setLoading(true);
 
     try {
-      const response = await fetch("/api/registrations", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          website_hp: honeypot, // honeypot
-        }),
-      });
+      const regId = generateRegistrationId();
+      const currentProgram = selectedProgramObj || PROGRAMS[1];
+      const newRecord: RegistrationRecord = {
+        id: regId,
+        fullName: formData.fullName.trim(),
+        birthDate: formData.birthDate ? formData.birthDate.trim() : "",
+        age: Number(formData.age),
+        parentName: formData.parentName.trim(),
+        parentWhatsapp: cleanPhone,
+        program: currentProgram.id,
+        programTitle: currentProgram.title,
+        priceDisplay: currentProgram.priceDisplay,
+        swimmingLevel: formData.swimmingLevel,
+        preferredSchedule: formData.preferredSchedule.trim(),
+        notes: formData.notes ? formData.notes.trim() : "",
+        agreePrivacy: true,
+        status: "Baru",
+        adminNotes: "",
+        agreedSchedule: "",
+        createdAt: new Date().toISOString(),
+      };
 
-      const result = await response.json();
+      let isSaved = false;
+      let lastError = "";
 
-      if (!response.ok || !result.success) {
-        throw new Error(result.error || "Gagal menyimpan pendaftaran ke sistem.");
+      // 1. Simpan langsung ke Cloud Firestore via Client SDK (Direkomendasikan & Cepat)
+      try {
+        const clientDb = getClientDb();
+        if (clientDb) {
+          await setDoc(doc(clientDb, "registrations", regId), newRecord);
+          isSaved = true;
+        }
+      } catch (clientErr: any) {
+        console.warn("Direct Firestore client write error:", clientErr);
+        lastError = clientErr.message || "";
       }
 
-      // Berhasil disimpan di database!
-      setSuccessRecord(result.data);
+      // 2. Jika client write belum berhasil, fallback ke Server API route
+      if (!isSaved) {
+        try {
+          const response = await fetch("/api/registrations", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              ...formData,
+              website_hp: honeypot, // honeypot
+            }),
+          });
+
+          const result = await response.json();
+          if (response.ok && result.success) {
+            isSaved = true;
+            if (result.data) {
+              newRecord.id = result.data.id;
+            }
+          } else {
+            lastError = result.error || lastError || "Gagal menyimpan pendaftaran ke server.";
+          }
+        } catch (apiErr: any) {
+          console.warn("API route write error:", apiErr);
+          lastError = apiErr.message || lastError;
+        }
+      }
+
+      if (isSaved) {
+        // Berhasil disimpan di database!
+        setSuccessRecord(newRecord);
+      } else {
+        throw new Error(
+          lastError ||
+            "Gagal menghubungkan ke database cloud. Data formulir Anda tetap aman di bawah ini. Silakan gunakan tombol WhatsApp untuk langsung mengirimkan pendaftaran ke Admin."
+        );
+      }
     } catch (err: any) {
       console.error("Submission failed:", err);
       setErrorMessage(
         err.message ||
-          "Terjadi kendala saat menyimpan pendaftaran. Mohon periksa koneksi Anda dan coba lagi."
+          "Terjadi kendala saat menyimpan pendaftaran. Data Anda tetap tersimpan di formulir ini."
       );
     } finally {
       setLoading(false);
@@ -242,14 +313,49 @@ export default function RegistrationForm() {
           />
         </div>
 
-        {/* Error Alert */}
+        {/* Error Alert dengan WhatsApp Fallback */}
         {errorMessage && (
-          <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs sm:text-sm flex items-start gap-3 animate-in fade-in">
-            <AlertCircle className="w-5 h-5 text-rose-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="font-bold">Pendaftaran Belum Dapat Disimpan</p>
-              <p className="text-xs mt-0.5">{errorMessage}</p>
+          <div className="p-4 sm:p-5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-900 text-xs sm:text-sm flex flex-col gap-3 animate-in fade-in">
+            <div className="flex items-start gap-3">
+              <AlertCircle className="w-5 h-5 text-rose-600 flex-shrink-0 mt-0.5" />
+              <div className="space-y-1">
+                <p className="font-bold text-rose-950">Pendaftaran Belum Tersimpan ke Database Cloud</p>
+                <p className="text-xs text-rose-800 leading-relaxed">{errorMessage}</p>
+              </div>
             </div>
+
+            {formData.fullName.trim() && (
+              <div className="pt-3 border-t border-rose-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white/80 p-3.5 rounded-xl border border-rose-100">
+                <div className="space-y-0.5">
+                  <p className="font-bold text-xs text-slate-900">
+                    Data Anda Aman & Tidak Hilang!
+                  </p>
+                  <p className="text-[11px] text-slate-600">
+                    Kirim formulir pendaftaran ini langsung ke WhatsApp Admin Bougenville SC ({CLUB_INFO.whatsappDisplay}):
+                  </p>
+                </div>
+                <a
+                  href={buildRegistrationWhatsAppUrl({
+                    id: "PENDING-" + Date.now().toString().slice(-6),
+                    fullName: formData.fullName,
+                    age: formData.age,
+                    parentName: formData.parentName,
+                    programTitle: selectedProgramObj?.title || "Reguler",
+                    priceDisplay: selectedProgramObj?.priceDisplay || "-",
+                    swimmingLevel: formData.swimmingLevel,
+                    preferredSchedule: formData.preferredSchedule,
+                    notes: formData.notes,
+                  })}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md transition flex-shrink-0"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Kirim via WhatsApp Admin</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            )}
           </div>
         )}
 
