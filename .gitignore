@@ -26,7 +26,10 @@
 
 # Firebase Service Account & Private Keys
 *service-account*.json
+*serviceAccount*.json
 *firebase-adminsdk*.json
+*credentials*.json
+*secret*.json
 *.pem
 
 # Database development lokal

@@ -1,30 +1,10 @@
-import { getFirestore as getAdminFirestore } from "firebase-admin/firestore";
-import { getApps as getAdminApps, initializeApp as initAdminApp, cert, App as AdminApp } from "firebase-admin/app";
 import { doc, setDoc } from "firebase/firestore";
 import { getClientDb } from "./firebase";
+import { getAdminFirestore } from "./firebase-admin";
 import { RegistrationRecord } from "./types";
 
-let adminApp: AdminApp | undefined;
-
-// Inisialisasi Firebase Admin SDK HANYA jika service account credentials tersedia
 function getAdminDb() {
-  if (adminApp) {
-    return getAdminFirestore(adminApp);
-  }
-
-  if (process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
-    try {
-      const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
-      adminApp = initAdminApp({
-        credential: cert(serviceAccount),
-      });
-      return getAdminFirestore(adminApp);
-    } catch (e) {
-      console.error("Gagal mengurai FIREBASE_SERVICE_ACCOUNT_KEY:", e);
-    }
-  }
-
-  return null;
+  return getAdminFirestore();
 }
 
 /**
