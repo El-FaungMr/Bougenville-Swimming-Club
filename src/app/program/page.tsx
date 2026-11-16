@@ -137,6 +137,9 @@ export default function ProgramPage() {
                 <li>
                   <strong>Harga Kelas Private (Rp300.000 – Rp350.000):</strong> Ditentukan langsung oleh admin klub setelah berkonsultasi mengenai usia atlet, latar belakang kondisi fisik, dan tingkat penguasaan air saat ini. Kami tidak menggunakan sistem otomatisasi harga tanpa kesepakatan transparan terlebih dahulu.
                 </li>
+                <li>
+                  <strong>Tiket Masuk Kolam Renang (HTM):</strong> Biaya paket merupakan jasa kepelatihan resmi profesional. Tiket masuk kolam renang dibayarkan sesuai tarif reguler kolam renang mitra yang disepakati di area Karawang (misal: Wonderland Galuh Mas atau kolam terdekat).
+                </li>
               </ul>
             </div>
           </div>

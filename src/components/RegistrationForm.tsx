@@ -377,7 +377,7 @@ export default function RegistrationForm() {
                 htmlFor="fullName"
                 className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
               >
-                Nama Lengkap Atlet *
+                Nama Lengkap Atlet <span className="text-rose-500 font-bold ml-0.5">*</span>
               </label>
               <input
                 type="text"
@@ -415,7 +415,7 @@ export default function RegistrationForm() {
                 htmlFor="age"
                 className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
               >
-                Usia Atlet (Tahun) *
+                Usia Atlet (Tahun) <span className="text-rose-500 font-bold ml-0.5">*</span>
               </label>
               <input
                 type="number"
@@ -452,7 +452,7 @@ export default function RegistrationForm() {
                 htmlFor="parentName"
                 className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
               >
-                Nama Orang Tua / Wali *
+                Nama Orang Tua / Wali <span className="text-rose-500 font-bold ml-0.5">*</span>
               </label>
               <input
                 type="text"
@@ -473,7 +473,7 @@ export default function RegistrationForm() {
                 htmlFor="parentWhatsapp"
                 className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
               >
-                Nomor WhatsApp Orang Tua *
+                Nomor WhatsApp Orang Tua <span className="text-rose-500 font-bold ml-0.5">*</span>
               </label>
               <input
                 type="tel"
@@ -507,7 +507,7 @@ export default function RegistrationForm() {
           {/* Program Selection Cards */}
           <div className="space-y-2">
             <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-              Pilih Program Renang *
+              Pilih Program Renang <span className="text-rose-500 font-bold ml-0.5">*</span>
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {PROGRAMS.map((prog) => {
@@ -573,7 +573,7 @@ export default function RegistrationForm() {
               htmlFor="swimmingLevel"
               className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
             >
-              Tingkat Kemampuan Berenang Atlet Saat Ini *
+              Tingkat Kemampuan Berenang Atlet Saat Ini <span className="text-rose-500 font-bold ml-0.5">*</span>
             </label>
             <select
               id="swimmingLevel"
@@ -601,7 +601,7 @@ export default function RegistrationForm() {
               htmlFor="preferredSchedule"
               className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
             >
-              Preferensi Hari & Jam Latihan (Appointment) *
+              Preferensi Hari & Jam Latihan (Appointment) <span className="text-rose-500 font-bold ml-0.5">*</span>
             </label>
             <input
               type="text"

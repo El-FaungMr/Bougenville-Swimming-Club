@@ -82,7 +82,7 @@ export default function KebijakanPrivasiPage() {
               <h2>4. Akses Terbatas Pengelola (Admin)</h2>
             </div>
             <p>
-              Akses terhadap data pendaftaran dibatasi secara ketat hanya untuk <strong>dua (2) orang pengelola resmi</strong> {CLUB_INFO.name}. Setiap akses dilindungi dengan mekanisme autentikasi terenkripsi (*Cloud Firestore Security Rules* & *Firebase Authentication*) yang diverifikasi di level backend (role allowlist), bukan sekadar menyembunyikan tombol di antarmuka.
+              Akses terhadap data pendaftaran dibatasi secara ketat hanya untuk <strong>dua (2) orang pengelola resmi</strong> {CLUB_INFO.name}. Setiap akses dilindungi dengan mekanisme autentikasi terenkripsi (<em>Cloud Firestore Security Rules</em> &amp; <em>Firebase Authentication</em>) yang diverifikasi di level backend (role allowlist), bukan sekadar menyembunyikan tombol di antarmuka.
             </p>
           </section>
 

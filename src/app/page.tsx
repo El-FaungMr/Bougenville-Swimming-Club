@@ -1,6 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { PROGRAMS, CLUB_INFO } from "@/lib/constants";
+import CoachProfile from "@/components/CoachProfile";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import FaqAccordion from "@/components/FaqAccordion";
 import {
   Waves,
   ShieldCheck,
@@ -10,7 +13,8 @@ import {
   Sparkles,
   PhoneCall,
   CheckCircle2,
-  HelpCircle,
+  Clock,
+  MapPin,
 } from "lucide-react";
 
 export default function HomePage() {
@@ -28,7 +32,7 @@ export default function HomePage() {
             <div className="lg:col-span-7 text-center lg:text-left space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100 border border-brand-200 text-brand-900 text-xs sm:text-sm font-semibold shadow-sm">
                 <span className="w-2.5 h-2.5 rounded-full bg-brand-500 animate-pulse" />
-                <span>Pendaftaran Atlet Baru Terbuka</span>
+                <span>Pendaftaran Atlet Baru Terbuka • Area Karawang</span>
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15]">
@@ -41,7 +45,7 @@ export default function HomePage() {
               <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 Selamat datang di <strong>Bougenville Swimming Club</strong>. Kami
                 membimbing anak-anak, remaja, hingga dewasa dengan kurikulum bertahap,
-                pendekatan yang sabar dan menyenangkan, serta mengutamakan keselamatan air (*water safety*).
+                pendekatan yang sabar dan menyenangkan, serta mengutamakan keselamatan air (<em>water safety</em>).
               </p>
 
               {/* Tombol Aksi */}
@@ -66,7 +70,7 @@ export default function HomePage() {
               <div className="pt-8 border-t border-slate-200/80 grid grid-cols-3 gap-4 text-center lg:text-left">
                 <div>
                   <p className="text-xl sm:text-2xl font-extrabold text-brand-700">Terarah</p>
-                  <p className="text-xs sm:text-sm font-medium text-slate-500">Teknik Bertahap</p>
+                  <p className="text-xs sm:text-sm font-medium text-slate-500">Pedagogi PJKR</p>
                 </div>
                 <div>
                   <p className="text-xl sm:text-2xl font-extrabold text-brand-700">Aman</p>
@@ -97,7 +101,7 @@ export default function HomePage() {
                   <div className="absolute bottom-6 left-6 right-6 text-white">
                     <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-semibold mb-2">
                       <Sparkles className="w-3.5 h-3.5 text-cyan-300" />
-                      Lingkungan Latihan Positif
+                      <span>Lingkungan Latihan Positif</span>
                     </div>
                     <h3 className="text-xl font-bold leading-snug">Metode Belajar Terukur & Sabar</h3>
                     <p className="text-xs text-slate-200 mt-1">
@@ -174,18 +178,21 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* SECTION PROFIL HEAD COACH & METODOLOGI */}
+      <CoachProfile />
+
       {/* RINGKASAN PROGRAM & HARGA */}
       <section className="py-20 bg-slate-50 border-y border-slate-200/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
             <span className="text-xs font-bold text-brand-600 uppercase tracking-widest bg-brand-100/60 px-3 py-1 rounded-full">
               Pilihan Program
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
               Program Latihan & Biaya Resmi
             </h2>
-            <p className="text-slate-600 mt-3 text-sm sm:text-base">
-              Biaya transparan tanpa biaya tersembunyi. Jadwal ditentukan berdasarkan appointment dan kesepakatan bersama admin klub.
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Biaya resmi transparan tanpa biaya tersembunyi. Seluruh jadwal sesi disepakati via appointment bersama admin klub untuk area Karawang dan sekitarnya.
             </p>
           </div>
 
@@ -206,16 +213,35 @@ export default function HomePage() {
                 )}
                 <div>
                   <h3 className="text-xl font-bold text-slate-900">{program.title}</h3>
-                  <p className="text-xs text-slate-500 mt-1">{program.description}</p>
+                  <p className="text-xs text-slate-500 mt-1 leading-relaxed">{program.description}</p>
 
-                  <div className="mt-6 mb-6 pb-6 border-b border-slate-100">
+                  {/* Harga */}
+                  <div className="mt-6 mb-5 pb-5 border-b border-slate-100">
                     <span className="text-3xl font-extrabold text-slate-900">
                       {program.priceDisplay}
                     </span>
                     <p className="text-xs text-slate-500 mt-1 font-medium">{program.priceNote}</p>
                   </div>
 
-                  <ul className="space-y-3 text-xs sm:text-sm text-slate-600 mb-8">
+                  {/* Detail Durasi & Rasio */}
+                  <div className="space-y-2 mb-5 pb-5 border-b border-slate-100 text-xs text-slate-600">
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-brand-600 flex-shrink-0" />
+                      <span>Durasi: <strong>{program.duration}</strong></span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Users className="w-4 h-4 text-brand-600 flex-shrink-0" />
+                      <span>Rasio: <strong>{program.ratio}</strong></span>
+                    </div>
+                  </div>
+
+                  {/* Keterangan Transparan HTM Kolam */}
+                  <div className="mb-6 p-2.5 rounded-xl bg-slate-50 border border-slate-100 text-[11px] text-slate-500 leading-relaxed">
+                    <p>💡 <strong>Info Tiket:</strong> {program.ticketPolicy}</p>
+                  </div>
+
+                  {/* Fitur Layanan */}
+                  <ul className="space-y-2.5 text-xs sm:text-sm text-slate-600 mb-8">
                     {program.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-2.5">
                         <CheckCircle2 className="w-4 h-4 text-brand-600 flex-shrink-0 mt-0.5" />
@@ -242,7 +268,7 @@ export default function HomePage() {
 
           <div className="mt-10 text-center">
             <p className="text-xs text-slate-500 max-w-xl mx-auto">
-              * Khusus program <strong>Private</strong>, biaya Rp300.000–Rp350.000 merupakan estimasi kisaran dan harga final akan dikonfirmasi oleh admin setelah mengevaluasi usia serta tingkat kemampuan berenang calon atlet.
+              <span className="font-semibold text-slate-600">Catatan:</span> Khusus program <strong>Private (1-on-1)</strong>, biaya Rp300.000–Rp350.000 merupakan kisaran estimasi dan harga final akan dikonfirmasi admin setelah asesmen usia serta kesiapan anak.
             </p>
           </div>
         </div>
@@ -251,13 +277,16 @@ export default function HomePage() {
       {/* CARA MENDAFTAR SECTION */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-2">
             <span className="text-xs font-bold text-cyan-700 uppercase tracking-widest bg-cyan-50 px-3 py-1 rounded-full border border-cyan-200">
               Alur Mudah
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
               3 Langkah Mudah Memulai Latihan
             </h2>
+            <p className="text-xs sm:text-sm text-slate-500">
+              Proses pendaftaran cepat dan langsung terhubung dengan admin resmi kami.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center relative">
@@ -266,7 +295,7 @@ export default function HomePage() {
                 1
               </div>
               <h4 className="font-bold text-slate-900 mb-2">Isi Formulir Online</h4>
-              <p className="text-xs sm:text-sm text-slate-600">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                 Lengkapi nama atlet, umur, pilihan program, kemampuan renang, dan kontak orang tua/wali melalui formulir di website.
               </p>
             </div>
@@ -276,8 +305,8 @@ export default function HomePage() {
                 2
               </div>
               <h4 className="font-bold text-slate-900 mb-2">Konfirmasi via WhatsApp</h4>
-              <p className="text-xs sm:text-sm text-slate-600">
-                Setelah tersimpan di sistem, Anda diarahkan otomatis ke WhatsApp admin untuk menyepakati hari & jam latihan (appointment).
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Setelah data tersimpan di sistem, Anda diarahkan otomatis ke WhatsApp admin untuk menyepakati hari & jam latihan (appointment).
               </p>
             </div>
 
@@ -285,14 +314,28 @@ export default function HomePage() {
               <div className="w-12 h-12 mx-auto rounded-full bg-emerald-600 text-white font-extrabold flex items-center justify-center mb-4 text-lg">
                 3
               </div>
-              <h4 className="font-bold text-slate-900 mb-2">Mulai Latihan di Kolam</h4>
-              <p className="text-xs sm:text-sm text-slate-600">
-                Datang ke kolam renang sesuai jadwal appointment dan nikmati sesi latihan renang yang seru, aman, dan mendidik.
+              <h4 className="font-bold text-slate-900 mb-2">Latihan di Kolam Karawang</h4>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Datang ke kolam renang mitra (Wonderland Galuh Mas atau kolam terdekat di area Karawang) sesuai kesepakatan appointment.
               </p>
             </div>
           </div>
+
+          {/* Banner Lokasi Layanan */}
+          <div className="mt-10 p-5 rounded-2xl bg-cyan-50/70 border border-cyan-100 max-w-2xl mx-auto flex items-center gap-3.5 text-xs text-cyan-950 text-left shadow-sm">
+            <MapPin className="w-5 h-5 text-cyan-600 flex-shrink-0" />
+            <p className="leading-relaxed">
+              <strong>Area Layanan Resmi:</strong> Melayani wilayah <strong>Karawang & sekitarnya</strong> dengan titik kolam renang mitra representatif seperti <strong>Wonderland Galuh Mas</strong> serta kolam renang terdekat lainnya sesuai kesepakatan.
+            </p>
+          </div>
         </div>
       </section>
+
+      {/* SECTION TESTIMONI ORANG TUA */}
+      <TestimonialsSection />
+
+      {/* SECTION FAQ INTERAKTIF (ACCORDION) */}
+      <FaqAccordion />
 
       {/* CTA BANNER */}
       <section className="py-16 bg-gradient-to-r from-brand-900 via-brand-800 to-slate-900 text-white relative">
@@ -300,8 +343,8 @@ export default function HomePage() {
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
             Siap Memulai Perjalanan Renang Bersama Bougenville?
           </h2>
-          <p className="text-slate-300 max-w-2xl mx-auto text-sm sm:text-base">
-            Daftarkan diri atau putra-putri Anda sekarang. Kami siap membantu Anda belajar renang dari dasar hingga mahir dengan pendampingan terbaik.
+          <p className="text-slate-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+            Daftarkan diri atau putra-putri Anda sekarang. Kami siap membantu Anda belajar renang dari dasar hingga mahir dengan pendampingan terbaik di Karawang.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <Link

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import { CLUB_INFO, PROGRAMS } from "@/lib/constants";
-import { Mail, Phone, Instagram, Shield, HeartHandshake, Lock } from "lucide-react";
+import { Mail, Phone, Instagram, Shield, HeartHandshake, MapPin } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -62,8 +62,8 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
-              <li className="pt-2 text-xs text-slate-400">
-                * Jadwal fleksibel melalui appointment dengan admin.
+              <li className="pt-2 text-xs text-slate-400 flex items-start gap-1">
+                <span className="font-semibold text-slate-300">Catatan:</span> Jadwal fleksibel melalui appointment dengan admin.
               </li>
             </ul>
           </div>
@@ -142,13 +142,14 @@ export default function Footer() {
                 </a>
               </div>
             </div>
-            <div className="pt-3">
-              <Link
-                href="/admin"
-                className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-200 transition-colors px-2.5 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60"
-              >
-                <Lock className="w-3.5 h-3.5" /> Portal Admin
-              </Link>
+            <div className="pt-2 border-t border-slate-800/80 text-[11px] text-slate-400 space-y-1">
+              <p className="font-semibold text-slate-300 flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
+                <span>Area Layanan:</span>
+              </p>
+              <p className="leading-relaxed text-slate-400">
+                Karawang & sekitarnya (Wonderland Galuh Mas & kolam renang mitra terdekat via appointment).
+              </p>
             </div>
           </div>
         </div>

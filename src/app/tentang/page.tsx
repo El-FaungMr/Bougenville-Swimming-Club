@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { CLUB_INFO } from "@/lib/constants";
-import { ShieldCheck, Heart, Target, Compass, ArrowRight, Award } from "lucide-react";
+import CoachProfile from "@/components/CoachProfile";
+import { ShieldCheck, Heart, Target, Compass, ArrowRight, Award, MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Tentang Kami",
@@ -55,8 +56,15 @@ export default function TentangPage() {
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
               Kami menyadari bahwa setiap peserta didik memiliki latar belakang, kondisi fisik, dan keberanian yang berbeda terhadap air. Oleh karena itu, pendekatan kami mengutamakan kesabaran dan metode pengajaran bertahap, menjamin setiap langkah dilakukan dengan aman tanpa menimbulkan trauma atau paksaan.
             </p>
+            <div className="pt-2 flex items-center gap-2 text-xs font-semibold text-brand-700 bg-brand-50/70 p-3 rounded-xl border border-brand-100">
+              <MapPin className="w-4 h-4 text-brand-600 flex-shrink-0" />
+              <span>Titik Latihan: Area Karawang & sekitarnya (Wonderland Galuh Mas & kolam mitra terpilih via appointment).</span>
+            </div>
           </div>
         </div>
+
+        {/* Profil Head Coach & Metodologi */}
+        <CoachProfile showCta={false} />
 
         {/* Tujuan Latihan */}
         <div className="space-y-8">
@@ -77,7 +85,7 @@ export default function TentangPage() {
               </div>
               <h3 className="text-base font-bold text-slate-900">1. Keselamatan Air (Water Safety)</h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Menjadikan keahlian bertahan hidup di air (*survival floating*) dan kontrol ketenangan sebagai prioritas mutlak sebelum melangkah ke teknik yang lebih rumit.
+                Menjadikan keahlian bertahan hidup di air (<em>survival floating</em>) dan kontrol ketenangan sebagai prioritas mutlak sebelum melangkah ke teknik yang lebih rumit.
               </p>
             </div>
 

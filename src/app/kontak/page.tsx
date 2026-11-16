@@ -5,7 +5,7 @@ import { Phone, Mail, Instagram, MessageCircle, Clock, ShieldCheck, MapPin } fro
 export const metadata: Metadata = {
   title: "Kontak Resmi",
   description:
-    "Hubungi Bougenville Swimming Club melalui WhatsApp 6285135630305, Instagram @bougenville.sc, atau email bougenville.sc@gmail.co.",
+    "Hubungi Bougenville Swimming Club melalui WhatsApp 6285135630305, Instagram @bougenville.sc, atau email bougenville.sc@gmail.com.",
 };
 
 export default function KontakPage() {
@@ -130,12 +130,15 @@ export default function KontakPage() {
           </div>
 
           <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 text-xs text-slate-600">
-            <h4 className="font-bold text-sm text-slate-900">Informasi Lokasi Latihan:</h4>
+            <h4 className="font-bold text-sm text-slate-900 flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-brand-600" />
+              <span>Wilayah Layanan & Lokasi Latihan:</span>
+            </h4>
             <p className="leading-relaxed">
-              Latihan diselenggarakan di kolam renang mitra terpilih dengan standar kebersihan sirkulasi air yang teruji dan kedalaman bertahap yang aman bagi anak-anak.
+              Kami melayani <strong>Area Karawang & sekitarnya</strong>. Latihan diselenggarakan di titik kolam renang mitra pilihan yang bersih, nyaman, dan ramah anak—seperti <strong>Wonderland Galuh Mas</strong> serta kolam renang terdekat lainnya di Karawang sesuai kesepakatan appointment.
             </p>
-            <p className="leading-relaxed">
-              Untuk mengetahui lokasi kolam renang yang paling dekat dengan tempat tinggal Anda, silakan hubungi admin via WhatsApp.
+            <p className="leading-relaxed text-slate-500">
+              Ingin memilih kolam renang yang paling dekat dari tempat tinggal Anda? Silakan konsultasikan langsung dengan admin via WhatsApp.
             </p>
           </div>
         </div>
